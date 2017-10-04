@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
+import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -117,8 +118,15 @@ public class ModelManager extends ComponentManager implements Model {
                 && filteredPersons.equals(other.filteredPersons);
     }
 
+    //this is quite different from the suggest PR, hope it works.
     public void deleteTag(Tag tag){
-
+        for(ReadOnlyPerson p: addressBook.getPersonList()){
+            for(Tag t : p.getTags()){
+                if(tag.equals(t)){
+                    p.getTags().remove(t);
+                }
+            }
+        }
     }
 
 }
