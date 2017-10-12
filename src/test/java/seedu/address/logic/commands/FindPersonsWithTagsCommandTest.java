@@ -72,6 +72,20 @@ public class FindPersonsWithTagsCommandTest {
         assertCommandSuccess(command, expectedMessage, Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
     }
 
+    @Test
+    public void execute_oneKeyword_multiplePersonsFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 7);
+        FindPersonsWithTagsCommand command = prepareCommand("friends");
+        assertCommandSuccess(command, expectedMessage, Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
+    }
+
+    @Test
+    public void execute_nonexistingTag_noPersonsFound() {
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
+        FindPersonsWithTagsCommand command = prepareCommand("sometag");
+        assertCommandSuccess(command, expectedMessage, Collections.emptyList());
+    }
+
     /**
      * Parses {@code userInput} into a {@code FindPersonsWithTagsCommand}.
      */
