@@ -60,7 +60,7 @@ public class PersonContainsTagsPredicateTest {
     }
 
     @Test
-    public void test_nameDoesNotContainKeywords_returnsFalse() {
+    public void test_personDoesNotHaveTagsContainingKeywords_returnsFalse() {
         // Zero keywords
         PersonContainsTagsPredicate predicate = new PersonContainsTagsPredicate(Collections.emptyList());
         assertFalse(predicate.test(new PersonBuilder().withTags("whateverTag").build()));
