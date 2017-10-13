@@ -39,7 +39,6 @@ public class FindPersonsWithTagsCommandParserTest {
         assertParseSuccess(parser, "friends", expectedFindPersonsWithTagsCommand);
     }
 
-
     @Test
     public void parse_validArgs_returnsFindCommand() {
         FindPersonsWithTagsCommand expectedFindPersonsWithTagsCommand =

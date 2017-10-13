@@ -32,6 +32,15 @@ public class FindPersonsWithTagsCommandParser implements Parser<FindPersonsWithT
         return new FindPersonsWithTagsCommand(new PersonContainsTagsPredicate(tagKeywordsImproved));
     }
 
+    /**
+     * From the original list of keywords, generate more keywords
+     * corresponding to the singular/plural form of the word,
+     * but might generate words that are not in proper English,
+     * for example, "memory" to "memorys" instead of "memories".
+     * @param originalKeywords
+     * @return a new list of keywords that includes the original keywords and
+     * singular/plural differences
+     */
     private ArrayList<String> getImprovedList(String[] originalKeywords) {
         ArrayList<String> improvedListOfKeywords = new ArrayList<String>();
         for (String originalKeyword : originalKeywords) {
