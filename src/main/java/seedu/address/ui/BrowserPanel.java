@@ -21,8 +21,9 @@ import seedu.address.model.person.ReadOnlyPerson;
 public class BrowserPanel extends UiPart<Region> {
 
     public static final String DEFAULT_PAGE = "default.html";
-    public static final String GOOGLE_SEARCH_URL_PREFIX = "https://www.google.com.sg/search?safe=off&q=";
-    public static final String GOOGLE_SEARCH_URL_SUFFIX = "&cad=h";
+    private static final String FACEBOOK_URL_PREFIX = "https://www.facebook.com/";
+    //public static final String GOOGLE_SEARCH_URL_PREFIX = "https://www.google.com.sg/search?safe=off&q=";
+    //public static final String GOOGLE_SEARCH_URL_SUFFIX = "&cad=h";
 
     private static final String FXML = "BrowserPanel.fxml";
 
@@ -41,9 +42,36 @@ public class BrowserPanel extends UiPart<Region> {
         registerAsAnEventHandler(this);
     }
 
+    /**
+     * Loads a person's Facebook page as specified, in the browser panel
+     * @param person
+     */
     private void loadPersonPage(ReadOnlyPerson person) {
-        loadPage(GOOGLE_SEARCH_URL_PREFIX + person.getName().fullName.replaceAll(" ", "+")
-                + GOOGLE_SEARCH_URL_SUFFIX);
+        String UrlToLoad = person.getFacebookAddress().value;
+        if (isValidUrl(UrlToLoad)){
+            loadPage(UrlToLoad);
+        } else {
+            loadPage (constructProperFacebookURLFromUsername(UrlToLoad));
+        }
+    }
+
+    private String constructProperFacebookURLFromUsername(String username) {
+        String Url = FACEBOOK_URL_PREFIX + username + "/";
+
+        return Url;
+    }
+
+    /**
+     * Returns true if a given string is a valid URL.
+     */
+    private static boolean isValidUrl(String facebookLink) {
+        try {
+            URL url = new URL(facebookLink);
+            url.toURI();
+            return true;
+        } catch (Exception exception) {
+            return false;
+        }
     }
 
     public void loadPage(String url) {
