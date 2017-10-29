@@ -44,23 +44,36 @@ public interface ReadOnlyPerson {
     }
 
     /**
-     * Formats the person as text, showing all contact details.
+     * Formats the person as text, showing all contact details that are present.
      */
     default String getAsText() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
+        builder.append(" Name: ")
+                .append(getName())
                 .append(" Phone: ")
-                .append(getPhone())
-                .append(" Email: ")
-                .append(getEmail())
-                .append(" Address: ")
-                .append(getAddress())
-                .append(" Birthday: ")
-                .append(getBirthday())
-                .append(" Facebook: ")
-                .append(getFacebookAddress())
-                .append(" Tags: ");
-        getTags().forEach(builder::append);
+                .append(getPhone());
+
+        if (!getEmail().value.equals("")) {
+            builder.append(" Email: ").append(getEmail());
+        }
+
+        if (!getAddress().value.equals("")) {
+            builder.append(" Address: ").append(getAddress());
+        }
+
+        if (!getBirthday().value.equals("")) {
+            builder.append(" Birthday: ").append(getBirthday());
+        }
+
+        if (!getFacebookAddress().value.equals("")) {
+            builder.append(" Facebook: ").append(getFacebookAddress());
+        }
+
+        if (!getTags().isEmpty()) {
+            builder.append(" Tags: ");
+            getTags().forEach(builder::append);
+        }
+
         return builder.toString();
     }
 

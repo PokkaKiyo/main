@@ -28,7 +28,9 @@ public class FacebookAddress {
      * @return
      */
     private String getInUrlFormIfNeeded(String facebookAddress) {
-        if (isValidUrl(facebookAddress)) {
+        if (facebookAddress.equals("")) {
+            return facebookAddress;
+        } else if (isValidUrl(facebookAddress)) {
             return facebookAddress;
         } else {
             return "https://www.facebook.com/" + facebookAddress;

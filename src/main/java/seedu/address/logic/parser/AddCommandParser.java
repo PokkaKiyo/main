@@ -42,16 +42,26 @@ public class AddCommandParser implements Parser<AddCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
                         PREFIX_ADDRESS, PREFIX_BIRTHDAY, PREFIX_FACEBOOKADDRESS, PREFIX_TAG, PREFIX_GOOGLEID);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS,
-                PREFIX_PHONE, PREFIX_EMAIL)) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME,
+                PREFIX_PHONE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
         try {
             Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME)).get();
             Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE)).get();
-            Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL)).get();
-            Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS)).get();
+
+            Optional<String> optionalEmail = argMultimap.getValue(PREFIX_EMAIL);
+            Email email = new Email("");
+            if (optionalEmail.isPresent()) {
+                email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL)).get();
+            }
+
+            Optional<String> optionalAddress = argMultimap.getValue(PREFIX_ADDRESS);
+            Address address = new Address("");
+            if (optionalAddress.isPresent()) {
+                address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS)).get();
+            }
 
             Optional<String> birthdayOptional = argMultimap.getValue(PREFIX_BIRTHDAY);
             Birthday birthday = new Birthday("");

@@ -31,10 +31,10 @@ public class Email {
     }
 
     /**
-     * Returns if a given string is a valid person email.
+     * Returns true if a given string is a valid person email or is empty.
      */
     public static boolean isValidEmail(String test) {
-        return test.matches(EMAIL_VALIDATION_REGEX);
+        return test.matches(EMAIL_VALIDATION_REGEX) || test.equals("");
     }
 
     @Override
