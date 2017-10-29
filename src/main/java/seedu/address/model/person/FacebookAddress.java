@@ -1,6 +1,7 @@
 package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.UnspecifiedFields.UNSPECIFIED_FACEBOOKADDRESS;
 
 import java.net.URL;
 
@@ -28,7 +29,7 @@ public class FacebookAddress {
      * @return
      */
     private String getInUrlFormIfNeeded(String facebookAddress) {
-        if (facebookAddress.equals("")) {
+        if (facebookAddress.equals(UNSPECIFIED_FACEBOOKADDRESS)) {
             return facebookAddress;
         } else if (isValidUrl(facebookAddress)) {
             return facebookAddress;

@@ -1,6 +1,7 @@
 package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.UnspecifiedFields.UNSPECIFIED_EMAIL;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 
@@ -24,17 +25,20 @@ public class Email {
     public Email(String email) throws IllegalValueException {
         requireNonNull(email);
         String trimmedEmail = email.trim();
-        if (!isValidEmail(trimmedEmail)) {
+        if (!isValidEmail(trimmedEmail) && isSpecifiedByUser(trimmedEmail)) {
             throw new IllegalValueException(MESSAGE_EMAIL_CONSTRAINTS);
         }
         this.value = trimmedEmail;
     }
 
+    public static boolean isSpecifiedByUser(String test) {
+        return !test.equals(UNSPECIFIED_EMAIL);
+    }
     /**
-     * Returns true if a given string is a valid person email or is empty.
+     * Returns true if a given string is a valid person email.
      */
     public static boolean isValidEmail(String test) {
-        return test.matches(EMAIL_VALIDATION_REGEX) || test.equals("");
+        return test.matches(EMAIL_VALIDATION_REGEX);
     }
 
     @Override

@@ -1,5 +1,9 @@
 package seedu.address.model.person;
 
+import static seedu.address.logic.parser.UnspecifiedFields.UNSPECIFIED_ADDRESS;
+import static seedu.address.logic.parser.UnspecifiedFields.UNSPECIFIED_EMAIL;
+import static seedu.address.logic.parser.UnspecifiedFields.UNSPECIFIED_FACEBOOKADDRESS;
+
 import java.util.Set;
 
 import javafx.beans.property.ObjectProperty;
@@ -48,16 +52,16 @@ public interface ReadOnlyPerson {
      */
     default String getAsText() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(" Name: ")
+        builder.append("Name: ")
                 .append(getName())
-                .append(" Phone: ")
+                .append(" Phone Number: ")
                 .append(getPhone());
 
-        if (!getEmail().value.equals("")) {
+        if (!getEmail().value.equals(UNSPECIFIED_EMAIL)) {
             builder.append(" Email: ").append(getEmail());
         }
 
-        if (!getAddress().value.equals("")) {
+        if (!getAddress().value.equals(UNSPECIFIED_ADDRESS)) {
             builder.append(" Address: ").append(getAddress());
         }
 
@@ -65,7 +69,7 @@ public interface ReadOnlyPerson {
             builder.append(" Birthday: ").append(getBirthday());
         }
 
-        if (!getFacebookAddress().value.equals("")) {
+        if (!getFacebookAddress().value.equals(UNSPECIFIED_FACEBOOKADDRESS)) {
             builder.append(" Facebook: ").append(getFacebookAddress());
         }
 

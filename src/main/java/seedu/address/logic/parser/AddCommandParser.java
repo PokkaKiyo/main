@@ -9,6 +9,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_GOOGLEID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.UnspecifiedFields.UNSPECIFIED_ADDRESS;
+import static seedu.address.logic.parser.UnspecifiedFields.UNSPECIFIED_EMAIL;
+import static seedu.address.logic.parser.UnspecifiedFields.UNSPECIFIED_FACEBOOKADDRESS;
 
 import java.util.Optional;
 import java.util.Set;
@@ -52,13 +55,13 @@ public class AddCommandParser implements Parser<AddCommand> {
             Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE)).get();
 
             Optional<String> optionalEmail = argMultimap.getValue(PREFIX_EMAIL);
-            Email email = new Email("");
+            Email email = new Email(UNSPECIFIED_EMAIL);
             if (optionalEmail.isPresent()) {
                 email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL)).get();
             }
 
             Optional<String> optionalAddress = argMultimap.getValue(PREFIX_ADDRESS);
-            Address address = new Address("");
+            Address address = new Address(UNSPECIFIED_ADDRESS);
             if (optionalAddress.isPresent()) {
                 address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS)).get();
             }
@@ -69,7 +72,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                 birthday = ParserUtil.parseBirthday(argMultimap.getValue(PREFIX_BIRTHDAY)).get();
             }
 
-            FacebookAddress facebookAddress = new FacebookAddress("");
+            FacebookAddress facebookAddress = new FacebookAddress(UNSPECIFIED_FACEBOOKADDRESS);
             Optional<String> facebookAddressOptional = argMultimap.getValue(PREFIX_FACEBOOKADDRESS);
             if (facebookAddressOptional.isPresent()) {
                 facebookAddress = ParserUtil.parseFacebookAddress(argMultimap.getValue(PREFIX_FACEBOOKADDRESS)).get();

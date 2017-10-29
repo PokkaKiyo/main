@@ -1,6 +1,7 @@
 package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.UnspecifiedFields.UNSPECIFIED_ADDRESS;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 
@@ -28,17 +29,22 @@ public class Address {
      */
     public Address(String address) throws IllegalValueException {
         requireNonNull(address);
-        if (!isValidAddress(address)) {
+        if (!isValidAddress(address) && isSpecifiedByUser(address)) {
             throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
         }
         this.value = address;
     }
 
+
+    public static boolean isSpecifiedByUser(String test) {
+        return !test.equals(UNSPECIFIED_ADDRESS);
+    }
+
     /**
-     * Returns true if a given string is a valid person address or is empty.
+     * Returns true if a given string is a valid person address.
      */
     public static boolean isValidAddress(String test) {
-        return test.matches(ADDRESS_VALIDATION_REGEX) || test.equals("");
+        return test.matches(ADDRESS_VALIDATION_REGEX);
     }
 
     @Override
