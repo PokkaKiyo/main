@@ -78,7 +78,7 @@
 
 .split-pane:horizontal .split-pane-divider {
     -fx-background-color: derive(#1E1F26, 5%);
-    -fx-border-color: transparent transparent transparent #4d4d4d;
+    -fx-border-color: #1E1F26 #1E1F26 #1E1F26 #1E1F26;
 }
 
 .split-pane {
@@ -88,7 +88,7 @@
 }
 
 .list-view {
-    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-background-color: #1E1F26;
     -fx-background-insets: 0;
     -fx-padding: 0;
 }
@@ -100,15 +100,15 @@
 }
 
 .list-cell:filled:even {
-    -fx-background-color: #283655;
+    -fx-background-color: linear-gradient(to bottom right, #283655, black);
 }
 
 .list-cell:filled:odd {
-    -fx-background-color: #4D648D;
+    -fx-background-color: linear-gradient(to bottom right, #4D648D, black);
 }
 
 .list-cell:filled:selected {
-    -fx-background-color: #424d5f;
+    -fx-background-color: linear-gradient(to bottom right, #424d5f, black);
 }
 
 .list-cell:filled:selected #cardPane {
@@ -148,7 +148,7 @@
 }
 
 .result-display {
-    -fx-background-color: transparent;
+    -fx-background-color: black;
     -fx-font-family: "Segoe UI Light";
     -fx-font-size: 13pt;
     -fx-text-fill: white;
@@ -174,13 +174,13 @@
 }
 
 .grid-pane {
-    -fx-background-color: derive(#1d1d1d, 30%);
-    -fx-border-color: derive(#1d1d1d, 30%);
+    -fx-background-color: red;
+    -fx-border-color: #1E1F26;
     -fx-border-width: 1px;
 }
 
 .grid-pane .anchor-pane {
-    -fx-background-color: derive(#1d1d1d, 30%);
+    -fx-background-color: derive(#1E1F26, 30%);
 }
 
 .context-menu {

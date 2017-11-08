@@ -24,27 +24,27 @@
     </Menu>
   </MenuBar>
 
-  <StackPane fx:id="commandBoxPlaceholder" style="-fx-background-color: #1E1F26;" styleClass="pane-with-border" VBox.vgrow="NEVER">
+  <StackPane fx:id="commandBoxPlaceholder" style="-fx-background-color: #1E1F26; -fx-border-color: black;" styleClass="pane-with-border" VBox.vgrow="NEVER">
     <padding>
       <Insets bottom="5" left="10" right="10" top="5" />
     </padding>
   </StackPane>
 
-  <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="100" style="-fx-background-color: #1E1F26;" styleClass="pane-with-border" VBox.vgrow="NEVER">
+  <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="100" style="-fx-background-color: #1E1F26; -fx-border-color: black;" styleClass="pane-with-border" VBox.vgrow="NEVER">
     <padding>
       <Insets bottom="5" left="10" right="10" top="5" />
     </padding>
   </StackPane>
 
   <SplitPane id="splitPane" fx:id="splitPane" dividerPositions="0.4" VBox.vgrow="ALWAYS">
-    <VBox fx:id="personList" minWidth="340" prefWidth="340" style="-fx-background-color: #1E1F26;" SplitPane.resizableWithParent="false">
+    <VBox fx:id="personList" minWidth="340" prefWidth="340" style="-fx-background-color: #1E1F26; -fx-border-color: black;" SplitPane.resizableWithParent="false">
       <padding>
         <Insets bottom="10" left="10" right="10" top="10" />
       </padding>
       <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />
     </VBox>
 
-    <StackPane fx:id="browserPlaceholder" prefWidth="340" style="-fx-background-color: #1E1F26;">
+    <StackPane fx:id="browserPlaceholder" prefWidth="340" style="-fx-background-color: #1E1F26; -fx-border-color: black;">
       <padding>
         <Insets bottom="10" left="10" right="10" top="10" />
       </padding>
