@@ -287,7 +287,7 @@ and/or +
 To further test the functionality, try: +
 *Type in*: add n/William Johnson p/91111111 e/william@johnson.com a/ 123 William Street #12-34 b/10101995 t/uniquetag +
 *Type in*: listtags +
-*Expected result*: This should display the new [tniquetag]. +
+*Expected result*: This should display the new [uniquetag]. +
 *Result Message*: You have the following tags: [classmates] [colleagues] [family] [friends] [neighbours] [schoolmates] [uniquetag]
 
 Next,
